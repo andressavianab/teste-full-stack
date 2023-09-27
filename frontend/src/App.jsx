@@ -1,7 +1,9 @@
+import {AppRoutes} from './AppRoutes'
+
 export const App = () => {
   return (
-    <>
-      <h1>Hello world</h1>
-    </>
+   <>
+   <AppRoutes />
+   </>
   )
 }
