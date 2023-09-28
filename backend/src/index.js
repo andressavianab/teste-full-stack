@@ -9,10 +9,10 @@ const axios = require("axios");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const jwtSecret = "iajkdfjuikde";
 
 const { authenticateDb } = require("./database/database");
-const auth = require("./middlewares/auth");
+const { auth } = require("./middlewares/auth");
+const { jwtSecret } = require("./middlewares/auth")
 
 app.use(cors());
 
@@ -25,17 +25,13 @@ app.use("/", usersController);
 
 authenticateDb();
 
-app.get("/", (req, res) => {
-  res.send("oi");
-});
-
 app.post("/auth", (req, res) => {
   var { email, password } = req.body;
 
   if (!email || !password) {
     return res
       .status(400)
-      .send({ message: "Por favor, preencha todos os campos!" });
+      .send({ message: "Please fill in all fields!" });
   }
 
   User.findOne({
@@ -56,12 +52,12 @@ app.post("/auth", (req, res) => {
           })
         });
       } else {
-        res.status(401).send({ message: "Senha incorreta." });
+        res.status(401).send({ message: "Incorrect password." });
       }
     } else {
       res
         .status(404)
-        .send({ message: "Desculpe, mas não encontramos sua conta." });
+        .send({ message: "Sorry, we couldn't find your account." });
     }
   });
 });
