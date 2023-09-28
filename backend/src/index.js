@@ -66,6 +66,9 @@ app.post("/auth", (req, res) => {
 app.get("/beers", auth, async (req, res) => {
   try {
     const { data } = await axios("https://api.punkapi.com/v2/beers");
+    if (!Array.isArray(data)) {
+      return res.status(500).json({ error: "External API data is not in the expected format." });
+    }
     return res.json(data);
   } catch (error) {
     console.error(error);
