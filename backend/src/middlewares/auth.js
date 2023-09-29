@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const jwtSecret = "iajkdfjuikde";
+const jwtSecret = process.env.JWT_SECRET;
 
 function auth(req, res, next) {
   const authToken = req.headers["authorization"];
@@ -8,7 +8,7 @@ function auth(req, res, next) {
     var token = bearer[1];
     jwt.verify(token, jwtSecret, (error, data) => {
       if (error) {
-        res.status(401).send({ message: "Token inválido!" });
+        res.status(401).send({ message: "Invalid Token!" });
       } else {
         req.token = token;
         req.loggedUser = { id: data.id, email: data.email };
@@ -17,7 +17,7 @@ function auth(req, res, next) {
       }
     });
   } else {
-    res.status(401).send({ message: "Token inválido!" });
+    res.status(401).send({ message: "Invalid Token!" });
   }
 }
 
