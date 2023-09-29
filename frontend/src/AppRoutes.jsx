@@ -16,11 +16,11 @@ export const AppRoutes = () => {
     if (loading) {
       return <div>carregando...</div>;
     }
+
     if (!authenticated) {
       return <Navigate to="/d/login" />;
-    } else {
-      return children;
     }
+    return children;
   };
 
   return (

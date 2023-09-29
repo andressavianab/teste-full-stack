@@ -61,9 +61,9 @@ export const AuthProvider = ({ children }) => {
         user,
         loading,
         login,
-        logout,      
+        logout,
         message,
-        setMessage
+        setMessage,
       }}
     >
       {children}

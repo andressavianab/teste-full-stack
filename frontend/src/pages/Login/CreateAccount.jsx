@@ -154,7 +154,7 @@ export const CreateAccount = () => {
         </div>
         <p className="self-center text-sm text-slate-400 pt-2">
           Already have an Account ? Register?{" "}
-          <Link to={"/login"} className="font-bold text-slate-200 underline">
+          <Link to={"/d/login"} className="font-bold text-slate-200 underline">
             Login
           </Link>
         </p>

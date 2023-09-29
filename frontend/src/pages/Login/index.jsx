@@ -93,7 +93,7 @@ export const LoginPage = () => {
         </div>
         <p className="self-center text-sm text-slate-400">
           Don't you have an account?{" "}
-          <Link to={"/register"} className="font-bold text-slate-200 underline">
+          <Link to={"/d/register"} className="font-bold text-slate-200 underline">
             Register
           </Link>
         </p>
