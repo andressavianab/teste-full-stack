@@ -1,11 +1,13 @@
 import { BrowserRouter, Routes, Navigate, Route } from "react-router-dom";
 
-import { LoginPage } from "./pages/Login";
-import { HomePage } from "./pages/Home";
+import { LoginPage } from "./pages/Login/Index";
+import { HomePage } from "./pages/Home/Index";
 
 import { AuthProvider, AuthContext } from "./contexts/auth";
 import { useContext } from "react";
 import { DefaultSignInPage } from "./layouts/DefaultSigInPage";
+import { CreateAccount } from "./pages/Login/CreateAccount";
+import { DefaultHomePage } from "./layouts/DefaultHomePage";
 
 export const AppRoutes = () => {
   const Private = ({ children }) => {
@@ -15,7 +17,7 @@ export const AppRoutes = () => {
       return <div>carregando...</div>;
     }
     if (!authenticated) {
-      return <Navigate to="/login" />;
+      return <Navigate to="/d/login" />;
     } else {
       return children;
     }
@@ -25,17 +27,20 @@ export const AppRoutes = () => {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          <Route path="/login" element={<DefaultSignInPage />}>
-            <Route path="/login" element={<LoginPage />} />
+          <Route path="/d" element={<DefaultSignInPage />}>
+            <Route path="/d/login" element={<LoginPage />} />
+            <Route path="/d/register" element={<CreateAccount />} />
           </Route>
-          <Route
-            path="/"
-            element={
-              <Private>
-                <HomePage />
-              </Private>
-            }
-          />
+          <Route path="/" element={<DefaultHomePage />}>
+            <Route
+              path="/"
+              element={
+                <Private>
+                  <HomePage />
+                </Private>
+              }
+            />
+          </Route>
         </Routes>
       </AuthProvider>
     </BrowserRouter>

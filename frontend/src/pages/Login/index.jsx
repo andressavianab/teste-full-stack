@@ -38,9 +38,9 @@ export const LoginPage = () => {
   };
 
   return (
-    <>
+    <div className="flex flex-col items-center w-[384px] max-w-sm">
       <form
-        className="max-w-sm max-h-505 h-full w-full flex flex-col p-7 border rounded-lg bg-slate-950 border-slate-700"
+        className="max-h-[550px] h-full w-full flex flex-col p-7 border rounded-lg bg-slate-950 border-slate-700"
         onSubmit={handleSubmit}
       >
         <div>
@@ -93,16 +93,18 @@ export const LoginPage = () => {
         </div>
         <p className="self-center text-sm text-slate-400">
           Don't you have an account?{" "}
-          <Link className="font-bold text-slate-200 underline" to="">
+          <Link to={"/register"} className="font-bold text-slate-200 underline">
             Register
           </Link>
         </p>
-        <div>
-          {message[0] === "Sorry, we couldn't find your account." && (
-            <p className="text-red-900 text-sm">{message}</p>
-          )}
-        </div>
       </form>
-    </>
+      <div>
+        {message[0] === "Sorry, we couldn't find your account." && (
+          <div className="mt-5 p-2">
+            <p className="text-red-700 text-sm">{message}</p>
+          </div>
+        )}
+      </div>
+    </div>
   );
 };

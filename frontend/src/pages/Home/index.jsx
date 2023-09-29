@@ -28,7 +28,7 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <>
+    <div className="w-full">
       <h1>Home Page</h1>
       {beers.map((beer) => 
         <>
@@ -37,6 +37,6 @@ export const HomePage = () => {
         </>
       )}
       <button onClick={handleLogout}>logout</button>
-    </>
+    </div>
   );
 };
