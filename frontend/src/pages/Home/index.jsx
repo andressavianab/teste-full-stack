@@ -68,7 +68,7 @@ export const HomePage = () => {
           value={abvGt}
           onChange={(e) => setAbvGt(e.target.value)}
         >
-          <option className="text-slate-400" value="" selected>
+          <option className="text-slate-400" defaultValue>
             Filter by abv
           </option>
           <option className="text-slate-200" value="5">

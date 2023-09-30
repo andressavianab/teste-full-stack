@@ -1,43 +1,62 @@
-O teste consiste em criar uma aplicação que expõe uma API REST de um CRUD de produtos e autenticação, e uma aplicação web contendo uma interface para login e acesso a dados de uma API externa. 
+# BEER APP 🍻
 
-Depois de logado, o usuário da aplicação web deve poder acessar os dados da [Punk API v2](https://punkapi.com/). 
+Essa é uma solução para o  [Teste full stack da Aqui Dev](https://github.com/AquiDev-com/teste-full-stack).
 
-NOTA: O front-end e back-end deve ser realizado apenas por desenvolvedores Full Stack. Caso contrário, realize o teste de acordo com sua área de atuação.
+## Índice
 
-NOTA 2: Não esqueça de fazer o fork do repositório.
+- [Visão geral](#visão-geral)
+- [O teste](#o-teste)
+- [Como rodar](#como-rodar)
+- [Docker](#docker)
+- [Author](#author)
 
-## Back-end 💻
+## Visão geral
+
+### O teste
+
+Back-end 🖥️
+
 - Todos os endpoints de consulta de dados devem ter autenticação por webtoken ou similar.
 - Deve existir validação dos dados recebidos pela API.
 - O CRUD não precisa de interface, apenas o login e o cadastro
 
-## Front-end 🎨
-O front-end deve atender aos seguintes requisitos:
+Front-end 🖌️
+
 - Interface de login e cadastro com feedbacks para usuário ou senha incorreta.
 - Listagem dos dados da Punk API v2.
 - Responsividade.
 
-## Extras 🌟
-O desenvolvimento dessas features é opcional.
+### Como rodar
 
-- Filtragem dos dados da Punk API v2 por diferentes critérios, como nome, estilo de cerveja, teor alcoólico, etc.
-- Ordenação dos dados da Punk API v2 por diferentes campos, como nome, teor alcoólico, etc.
-- Comentários e avaliações: permitir que os usuários deixem comentários e avaliações para as cervejas.
-- Dockerfile com todas as dependências.
+Clone o repositório e instale as dependências:
 
-## Critérios de avaliação ✅
-- Funcionamento do projeto.
-- Estrutura do código.
-- Uso de boas práticas.
-- Cumprimento dos requisitos mínimos.
+Front-end
+```bash
+cd teste-full-stack/frontend
+npm install
+cp .env.example .env.local # ajuste os valores de acordo com o seu ambiente
+npm run dev
+```
 
-## Entrega 📦
+Back-end
+```bash
+cd teste-full-stack/backend
+npm install
+cp .env.example .env # ajuste os valores de acordo com o seu ambiente
+npm run start
+```
 
-- Um repositório git (fork deste).
-- Um README do projeto com o passo-a-passo para executar a aplicação.
+### Docker 🐋
 
-## Observações 📝
+⚠️ ATENÇÃO! O Docker é apenas do frontend. Antes de dar o run, certifique-se de que você está rodando o backend na sua máquina, como foi explicado acima.
 
-1. Pode ser utilizado qualquer framework front-end, preprocessadores de css, task runners, bundlers, etc, de sua preferência, mas nenhum deles é de uso obrigatório.
+Ajuste os valores de `.env.local` e então execute os comandos de `build` e `run`:
 
-2. Não se deve fazer o commit de pastas como node_modules, o projeto deve instalar suas dependências a partir do package.json.
+```bash
+docker build -t frontend .
+docker run -it --rm -p 3000:3000 frontend
+```
+
+## Author 🖋️
+
+- github - [Andressa Viana](https://github.com/andressavianab)
