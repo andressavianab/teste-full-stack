@@ -2,6 +2,7 @@ const app = require("express");
 const router = app.Router();
 const User = require("./UsersModel");
 const bcrypt = require("bcrypt");
+const { auth } = require("../middlewares/auth");
 
 const saltRounds = 10;
 
@@ -107,13 +108,13 @@ router.put("/user/update/:id", (req, res) => {
   }
 });
 
-router.get("/users", (req, res) => {
+router.get("/users", auth, (req, res) => {
   User.findAll().then((user) => {
     res.status(200).json({ Users: user });
   });
 });
 
-router.get("/user/:id", (req, res) => {
+router.get("/user/:id", auth, (req, res) => {
   var id = parseInt(req.params.id);
 
   if (isNaN(id)) {
